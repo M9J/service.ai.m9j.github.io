@@ -14,7 +14,7 @@ const rootPath = process.cwd();
 app.use(express.json());
 
 // List of allowed origins
-const allowedOrigins = ["http://localhost:4200", "https://m9j.github.io"];
+const allowedOrigins = ["https://localhost:4200", "https://m9j.github.io"];
 
 // Dynamically set the origin
 app.use(
