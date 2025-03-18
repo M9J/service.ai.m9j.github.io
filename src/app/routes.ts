@@ -17,7 +17,7 @@ router.post("/ai/:model_name/predict", async (req: Request, res: Response) => {
   const prompt = requestBody.prompt;
   const prediction = await irService.predict(prompt);
   const response: IPredictResponse = {
-    prompt: requestBody.prompt,
+    prompt: prompt,
     prediction: prediction || "",
     model_name,
   };

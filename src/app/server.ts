@@ -12,27 +12,6 @@ const PORT = process.env.PORT || 8000;
 const rootPath = process.cwd();
 
 app.use(express.json());
-
-// List of allowed origins
-// const allowedOrigins = ["https://localhost:4200", "https://m9j.github.io"];
-
-// Dynamically set the origin
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       // Allow requests with no origin (like mobile apps or CURL requests)
-//       if (!origin || allowedOrigins.includes(origin)) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     // allowedHeaders: ["Content-Type", "Authorization"],
-//     // credentials: true, // If you need cookies or authentication tokens
-//   })
-// );
-
 app.use(cors());
 
 app.use("/", router);
