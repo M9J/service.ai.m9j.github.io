@@ -1,4 +1,6 @@
+const host = `https://raw.githubusercontent.com/M9J/models.ai.m9j.github.io/refs/heads/main`;
+
 export default {
-  modelPath: `https://huggingface.co/xioxisss/intent-recognition/resolve/main/model.json`,
-  labelsPath: `https://huggingface.co/xioxisss/intent-recognition/resolve/main/labels.json`,
+  modelPath: `${host}/intent-recognition/0.2/model.json`,
+  labelsPath: `${host}/intent-recognition/0.2/labels.json`,
 };
