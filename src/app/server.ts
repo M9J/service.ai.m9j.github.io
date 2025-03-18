@@ -2,12 +2,14 @@ import express from "express";
 import { initializeAIServices } from "./ai/initializer.ts";
 import router from "./routes.ts";
 import { logger } from "./utils.ts";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 app.use("/", router);
+app.use(cors());
 
 logger("Server starting...");
 logger("AI Services initializing...");
