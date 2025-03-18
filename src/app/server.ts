@@ -4,7 +4,7 @@ import router from "./routes.ts";
 import { logger } from "./utils.ts";
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 app.use("/", router);
@@ -16,5 +16,5 @@ logger("AI Services initialized.");
 
 app.listen(PORT, () => {
   logger("Server started...");
-  logger(`Server running on http://localhost:${PORT}`);
+  logger(`Server running on http://<IP_ADDRESS>:${PORT}`);
 });
