@@ -1,3 +1,3 @@
 export const logger = (message: string): void => {
-  console.log(`[Logger] ${message}`);
+  console.log(`[Logger] (${new Date().toISOString()}) ${message}`);
 };
