@@ -60,7 +60,7 @@ export default class IntentRecognitionService extends Service {
       const promptEmbedding = await this._embedder.embed([prompt]);
       const prediction = this._model.predict(tf.tensor2d(promptEmbedding.arraySync()));
       const tensor = Array.isArray(prediction) ? prediction[0] : (prediction as tf.Tensor);
-      const predictedIndex = tf.argMax(tensor, 0).dataSync()[0];
+      const predictedIndex = tf.argMax(tensor, -1).dataSync()[0];
       const intentLabels = this._labels;
       return intentLabels[predictedIndex];
     }
