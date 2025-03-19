@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp ../../certs_orig
+cp ../../certs_orig/ ../certs/
