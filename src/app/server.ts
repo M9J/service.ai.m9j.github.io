@@ -28,9 +28,9 @@ const httpsOptions = {
 
 app.listen(PORT, () => {
   logger("Server started...");
-  logger(`Server running on http://<IP_ADDRESS>:${PORT}`);
+  logger(`HTTP server running on http://<IP_ADDRESS>:${PORT}`);
 });
 
 https.createServer(httpsOptions, app).listen(443, () => {
-  console.log("HTTPS Server running on port 443");
+  logger(`HTTPS server running on https://<IP_ADDRESS>:443`);
 });

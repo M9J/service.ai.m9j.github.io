@@ -10,7 +10,7 @@ router.get("/", (_: Request, res: Response) => {
   res.send("service.AI.m9j.github.io");
 });
 
-router.post("ai/intent/predict", async (req: Request, res: Response) => {
+router.post("/ai/intent/predict", async (req: Request, res: Response) => {
   logger(req.method + ":" + req.url);
   const model_name: string = req.params.model_name;
   const requestBody: IPredictRequest = req.body;
