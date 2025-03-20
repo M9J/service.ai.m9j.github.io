@@ -6,7 +6,7 @@ import { logger } from "./utils.ts";
 const router = express.Router();
 
 router.get("/", (_: Request, res: Response) => {
-  res.send("service.AI.m9j.github.io");
+  res.send("services.AI.m9j.github.io");
 });
 
 router.post("/ai/intent/predict", async (req: Request, res: Response) => {

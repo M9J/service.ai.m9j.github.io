@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 // Define the routes
 router.get("/", (_, res) => {
-    res.send("service.AI.m9j.github.io");
+    res.send("services.AI.m9j.github.io");
 });
 router.post("/ai/:model_name/predict", (req, res) => {
     const model_name = req.params.model_name;
