@@ -5,7 +5,6 @@ import { logger } from "./utils.ts";
 
 const router = express.Router();
 
-// Define the routes
 router.get("/", (_: Request, res: Response) => {
   res.send("service.AI.m9j.github.io");
 });
@@ -15,11 +14,16 @@ router.post("/ai/intent/predict", async (req: Request, res: Response) => {
   const requestBody: IPredictRequest = req.body;
   const irService = IntentRecognitionService.getInstance();
   const prompt = requestBody.prompt;
-  const prediction = await irService.predict(prompt);
+  const minPredictionRank = requestBody.min_prediction_rank || 0;
+  const { predictedValue, predictionRank }: any = await irService.predict(
+    prompt,
+    minPredictionRank
+  );
   const response: IPredictResponse = {
     model_name: "intent-recognition",
     prompt: prompt,
-    prediction: prediction || "",
+    prediction: predictedValue,
+    prediction_rank: predictionRank,
   };
 
   res.json(response);

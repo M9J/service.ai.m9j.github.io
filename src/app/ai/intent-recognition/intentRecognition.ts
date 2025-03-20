@@ -51,18 +51,20 @@ export default class IntentRecognitionService extends Service {
     return this._isAlive;
   }
 
-  async predict(prompt: string) {
+  async predict(prompt: string, minPredictionRank: number) {
     if (!this._isAlive) {
       logger("Service is not alive");
       return null;
     }
     if (prompt && this._model && this._embedder && this._labels) {
       const promptEmbedding = await this._embedder.embed([prompt]);
-      const prediction = this._model.predict(tf.tensor2d(promptEmbedding.arraySync()));
-      const tensor = Array.isArray(prediction) ? prediction[0] : (prediction as tf.Tensor);
+      const predicted = this._model.predict(tf.tensor2d(promptEmbedding.arraySync()));
+      const tensor = Array.isArray(predicted) ? predicted[0] : (predicted as tf.Tensor);
       const predictedIndex = tf.argMax(tensor, -1).dataSync()[0];
-      const intentLabels = this._labels;
-      return intentLabels[predictedIndex];
+      const predictionRank = tf.max(tensor, -1).dataSync()[0];
+      const predictedValue = this._labels[predictedIndex];
+      if (predictionRank >= minPredictionRank) return { predictedValue, predictionRank };
+      else return { predictedValue: null, predictionRank: null };
     }
     return null;
   }
