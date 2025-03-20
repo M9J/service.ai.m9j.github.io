@@ -23,7 +23,7 @@ logger("AI Services initialized.");
 
 const httpsOptions = {
   key: fs.readFileSync(path.join(rootPath, `/certs/server.key`)), // Path to your private key
-  cert: fs.readFileSync(path.join(rootPath, `/certs/server.cert`)), // Path to your certificate
+  cert: fs.readFileSync(path.join(rootPath, `/certs/server.crt`)), // Path to your certificate
 };
 
 app.listen(PORT, () => {
